@@ -1,0 +1,119 @@
+Some output omitted if unnecessary.
+
+> require("xlsx")
+> require("ggplot2")
+
+1.) 
+
+> CEODataFile <- loadWorkbook("F:\\Téléchargements\\CEO.xlsx")
+> CEODataSheet <- readWorksheet(CEODataFile, sheet="CEO_Data")
+
+2.) 
+
+> CEOSalaryData <- readWorksheetFromFile("F:\\Téléchargements\\CEO.xlsx", sheet = "CEO_Data", region = "N1:P801")
+> CEOSalaryData$Other. <- as.numeric(CEOSalaryData$Other.) 
+> CEOSalaryData[is.na(CEOSalaryData)] <- 0
+> CEOSalaryData$TotalSal <- rowSums(CEODataSalary)
+
+> head(CEOSalaryData)
+  Salary. Bonus.  Other. TotalSal
+1  600000     NA     300   600300
+2  796935 624000   66669  1487604
+3  675000 450000  383184  1508184
+4  830000 800000 1645320  3275320
+5  559477 495100   33569  1088146
+6  650833 330000  118175  1099008
+
+> CEOSalaryData[is.na(CEOSalaryData)] <- 0
+> CEOSalaryData$SalPercent[is.na(CEOSalaryData$SalPercent)] <- 0
+> CEOSalaryData$BonusPercent[is.na(CEOSalaryData$BonusPercent)] <- 0
+
+> sum(CEOSalaryData$SalPercent) / length(CEOSalaryData$SalPercent)
+[1] 52.7383
+> sum(CEOSalaryData$BonusPercent) / length(CEOSalaryData$BonusPercent)
+[1] 27.91472
+
+3.)
+
+> CEODegrees <- CEODataSheet[c("MBA", "MSPhD")]
+> sapply(CEODegrees, function(x) {sum(x) / length(x) * 100})
+   MBA  MSPhD 
+26.375 50.500 
+
+4.)
+
+> CEOStates <- as.data.frame(table(CEODataSheet$STofBirth))
+> head(CEOStates)
+  Var1 Freq
+1   AK    1
+2   AL   12
+3   AR   12
+4   AZ    4
+5   CA   29
+6   CO    6
+
+> ggplot() + geom_bar(aes(x = CEOStates$Var1, y = CEOStates$Freq, width = 1.0), stat = "identity") 
+	+ xlab("States") + ylab("Occurrence of State") 
+	+ theme(panel.background = element_blank(), plot.title = element_text(size = 20, face = "bold"), legend.position = "none")
+	+ ggtitle("Occurences of CEO Per State") + geom_text(aes(35.1, 110, label = "New York", color = "red"))
+	
+> CEOStates <- CEOStates[order(-CEOStates[, "Freq"]),]
+> head(CEOStates, n = 1)
+   Var1 Freq
+35   NY  106
+
+5.) 
+
+> calcCorr <- function (x, y) {
++     len <- length(x$TotalSal)
++     totalComp <- x$TotalSal
++     IndustryAvgs <- data.frame(salesCor   = rep(NA, 1),
++                                profitsCor = rep(NA, 1),
++                                roiCor     = rep(NA, 1))
++     
++     IndustryAvgs$salesCor   <- cor(totalComp, y$Sales.)    
++     IndustryAvgs$profitsCor <- cor(totalComp, y$Profits.) 
++     IndustryAvgs$roiCor     <- cor(totalComp, y$Return5Yrs) 
++     
++     return(IndustryAvgs)
++ }
+> calcCorr(CEOSalaryData, CEODataSheet)
+   salesCor profitsCor     roiCor
+1 0.1682924  0.1672462 0.05313964
+
+6.)
+
+> avgSals <- function (data) {
++     len <- length(unique(data$Industry))
++     IndustryAvgs <- data.frame(Industry = unique(data$Industry), AvgSal = rep(NA, len), stringsAsFactors = FALSE)
++     FreqTable <- as.data.frame(table(data$Industry))
++     
++     for(i in 1:len) {
++         industry <- IndustryAvgs$Industry[i]
++         out <- (split(data, data$Industry == industry))["TRUE"]
++         freq <- (FreqTable[FreqTable$Var1 == industry,])$Freq
++         
++         IndustryAvgs$AvgSal[i] <- sum(out[[1]]$TotalSal) / freq
++     }
++     
++     
++     return(IndustryAvgs[order(-IndustryAvgs[, "AvgSal"]),])
++     
++ }
+> avgSals(CEOSalaryData)
+           Industry    AvgSal
+1  Aerospacedefense 3236332.8
+10    Entertainment 2532692.6
+2          Business 2079562.4
+
+7.)
+
+> CEOTotal$Yrs <- CEODataSheet$YrsCEO
+> CEOTotal$TotalSal <- CEOSalaryData$TotalSal
+> mapply(function(x) {x / 1000}, CEOTotal$TotalSal)
+
+
+
+
+
+

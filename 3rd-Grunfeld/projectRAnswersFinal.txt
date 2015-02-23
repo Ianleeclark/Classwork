@@ -1,0 +1,20 @@
+excel
+SUMMARY OUTPUT								
+								
+Regression Statistics								
+Multiple R	0.90437107							
+R Square	0.817887032							
+Adjusted R Square	0.816208571							
+Standard Error	90.28062756							
+Observations	220							
+								
+ANOVA								
+	df	SS	MS	F	Significance F			
+Regression	2	7943306.508	3971653.254	487.2840395	5.58451E-81			
+Residual	217	1768678.402	8150.591712					
+Total	219	9711984.91						
+								
+	Coefficients	Standard Error	t Stat	P-value	Lower 95%	Upper 95%	Lower 95.0%	Upper 95.0%
+Intercept	-38.41005399	8.413370921	-4.565358445	8.35044E-06	-54.99244041	-21.82766756	-54.99244041	-21.82766756
+X Variable 1	0.114534363	0.005518832	20.75336854	1.96093E-53	0.103656985	0.125411741	0.103656985	0.125411741
+X Variable 2	0.227514126	0.024228251	9.39044787	8.50197E-18	0.179761302	0.275266949	0.179761302	0.275266949
