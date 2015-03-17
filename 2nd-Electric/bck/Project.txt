@@ -1,0 +1,18 @@
+> require(xlsx)
+> library("MASS")
+
+Problem 1)
+
+> lm.out <- lm(Cost ~ Output + Pr_Labor + Pr_Capital + Pr_Fuel, data = UtilitiesDataSheet)
+> summary(lm.out)
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -70.495109  12.695008  -5.553 1.76e-07 ***
+Output        4.731137   0.109451  43.226  < 2e-16 ***
+Pr_Labor      0.003627   0.001055   3.437 0.000814 ***
+Pr_Capital    0.280083   0.129488   2.163 0.032557 *  
+Pr_Fuel       0.783460   0.165789   4.726 6.39e-06 ***
+
+
+

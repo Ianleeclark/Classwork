@@ -1,4 +1,13 @@
 calcCorr <- function (x) {
+  # Function to calculate average correlation CEO correlation for sales,
+  #   profits, and 5 year return.
+  #
+  # Args: 
+  #   x: Data frame containing CEO data
+  #
+  # Returns:
+  #   CEO data frame with new correlation columns
+  
   totalComp <- x$TotalSal
   IndustryAvgs <- data.frame(salesCor   = rep(NA, 1),
                              profitsCor = rep(NA, 1),
@@ -13,6 +22,14 @@ calcCorr <- function (x) {
 
 
 avgSals <- function(x) {
+  # Function to calculate average CEO total compensation per industry
+  #
+  # Args: 
+  #   x: Data frame containing CEO data
+  #
+  # Returns:
+  #   The greatest-to-least ordering of CEO total compensation
+
   len <- length(unique(x$Industry))
   IndustryAvgs <- data.frame(Industry = unique(x$Industry), AvgSal = rep(NA, len), stringsAsFactors = FALSE)
   FreqTable <- as.data.frame(table(x$Industry))
@@ -30,6 +47,11 @@ avgSals <- function(x) {
 }
 
 loadCEOData <- function() {
+  # Function to load and clean CEO data from Excel worksheet into a data frame
+  #
+  # Returns:
+  #   CEO data frame
+
   ceo.data <- readWorksheetFromFile("./CEO.xlsx", sheet = "CEO_Data", region = "A1:U801")
   
   ceo.data$Other. <- as.numeric(ceo.data$Other.) 
@@ -43,6 +65,12 @@ loadCEOData <- function() {
 }
 
 otherQuestions <- function(x) {
+  # Function to answer questions; done in print() format to later put into TeX
+  #
+  # Args: 
+  #   x: Data frame containing CEO data
+
+
   #Answers Question 3
   ceo.degrees <- x[c("MBA", "MSPhD")]
   deg <- sapply(ceo.degrees, function(x) {mean(x) * 100})
@@ -50,19 +78,17 @@ otherQuestions <- function(x) {
   
   #Answers Question 4
   ceo.states <- as.data.frame(table(x$STofBirth))
-  m <- ggplot() + geom_bar(aes(x = ceo.states$Var1, y = ceo.states$Freq, width = 1.0), stat = "identity") + xlab("States") + ylab("Occurrence of State") + theme(panel.background = element_blank(), plot.title = element_text(size = 20, face = "bold"), legend.position = "none") + ggtitle("Occurences of CEO Per State") + geom_text(aes(35.9, 87, angle = 90,  label = "New York", color = "red"))
+  m <- ggplot() + geom_bar(aes(x = ceo.states$Var1, y = ceo.states$Freq, width = 1.0), stat = "identity") 
+                + xlab("States") 
+                + ylab("Occurrence of State") 
+                + theme(panel.background = element_blank(), plot.title = element_text(size = 20, face = "bold"), legend.position = "none") 
+                + ggtitle("Occurences of CEO Per State") + geom_text(aes(35.9, 87, angle = 90,  label = "New York", color = "red"))
   print(m)
-  # You won't always be happy with what you program and that's OK.
   
   #Answers Question 5
   print(calcCorr(x))
   
   #Answers Question 6
-  ```{r}
-  avgSals(x)
-  ```
-  
-  #Answers Question 7
-  mapply(function(x) {x / 1000}, x$TotalSal)
+  print(avgSals())
 }
 

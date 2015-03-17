@@ -1,0 +1,22 @@
+> require(xlsx)
+
+Problem 1)
+
+> lm.out <- lm(formula = Cost ~ Pr_Labor + Pr_Capital + Pr_Fuel, data = UtilitiesDataSheet)
+> summary(lm.out)
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)
+(Intercept) -59.995100  51.858811  -1.157    0.250
+Pr_Labor      0.005624   0.004308   1.306    0.194
+Pr_Capital    0.387674   0.528953   0.733    0.465
+Pr_Fuel       1.022273   0.676990   1.510    0.134
+
+> summary(UtilitiesDataSheet)
+      Cost              Output          Pr_Labor       Pr_Capital       Pr_Fuel     
+ Min.   :  0.1304   Min.   : 0.004   Min.   : 5063   Min.   :39.13   Min.   : 9.00  
+ 1st Qu.:  9.5551   1st Qu.: 1.893   1st Qu.: 7024   1st Qu.:67.85   1st Qu.:24.02  
+ Median : 24.3565   Median : 5.316   Median : 7970   Median :74.43   Median :30.67  
+ Mean   : 44.2192   Mean   : 8.778   Mean   : 7963   Mean   :72.69   Mean   :30.56  
+ 3rd Qu.: 52.2525   3rd Qu.:10.985   3rd Qu.: 8683   3rd Qu.:79.00   3rd Qu.:35.98  
+ Max.   :277.2965   Max.   :72.247   Max.   :10964   Max.   :92.65   Max.   :50.45  
