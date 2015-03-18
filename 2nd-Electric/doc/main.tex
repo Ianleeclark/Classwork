@@ -1,5 +1,6 @@
 \documentclass[11pt,letterpaper,english]{article}
 
+\everymath=\expandafter{\the\everymath\displaystyle}
 \usepackage[margin=1.0in]{geometry}
 \usepackage{graphicx}
 \usepackage{upgreek}
@@ -8,65 +9,74 @@
 \author{Ian Clark}
 \date{}
 
+
 \begin{document}
 
 \maketitle
 
-\section{Problem 1}
+\section*{Problem 1}
 \begin{center}
 $\hat{y} = -70.4951 + 4.7311\upbeta_O + 0.0036\upbeta_L + 0.28\upbeta_K + 0.7835\upbeta_F$
 \end{center}
 
-\section{Problem 2}
-$\hat{y}$ (or the Cost function) is well-reflected by this model. When producing $0$ units, the firm will suffer a loss of $70$ million dollars. Due to overheads, anything other than negative would be out-of-place. 
+\section*{Problem 2}
+Ceteris paribus, each number ($4.73$, $.0036$, \&c.) show the amount that $\hat{y}$ will increase per unit/percentage increase in the $\upbeta$. Labor has the smallest effect on overall price while desired output will increase cost the most. Signs of the variables are covered in the answer to problem 3. With a ^$R^2$ of $0.9438$ and an adjusted $R^2$ this model seems to be a good fit.
 
 \vspace{5mm}
 \noindent
-$\upbeta_O$ (or the estimate of Output) is the predominate driver within this regression model. At a value of $4.7311$, output leads the cost estimate.
+$\upbeta_O$ (or the estimate of Output) is the predominate driver within this regression model. At a value of $4.7311$, output leads the cost estimate--not including the overhead costs.
 
-\vspace{5mm}
-\noindent
-$\upbeta_L$ (or the estimate of Labor) is on the less contributing side to the overall cost of production. 
-
-\vspace{5mm}
-\noindent
-$\upbeta_K$ (or the estimate of Capital) is the least intensive factor of production, so for every unit of energy produced, capita--overall--doesn't heavily contribute to the cost.
-
-\section{Problem 3}
-
+\section*{Problem 3}
 The sign of the output ($\upbeta_O$) makes perfect sense, as overhead costs exist, so whenever the firm is not producing electricity, they will be suffering losses.
 
 \vspace{5mm}
 \noindent
 For the price variables, as well, the signs make perfect sense because a negative sign on labor, capital, or fuel (when producing energy) would make no sense. You don't have workers paying to work for you and negative consumption of fuel is impossible).
 
-\section{Problem 4}
-$\upbeta_O$ (or the estimate of Output) is the predominate driver within this regression model. At a value of $4.7311$, output leads the cost estimate when not factoring in the static overhead cost.
+\section*{Problem 4}
+The parameter estimate of \textbf{Output} shows that desired or planned output is one of the strongest (in terms of magnitude) in changing the operating price. That is, the higher the Output, the higher the price.
 
-\vspace{5mm}
-\noindent
-The Elasticity of Cost w.r.t the price of Fuel is equal to 1.335. This means that for every $1\%$ increase/decrease in fuel will lead to a $1\%$ increase/decrease in Cost.
+\begin{center}
+$\upepsilon_{{\hat{Y}},F} = \frac {\mathit{\Updelta {\hat{Y}}}} {\mathit{\Updelta F}} * \frac F {\hat{Y}} = \upbeta_F * \frac F {\hat{Y}} = 0.7835 * \frac {30.56} {44.219} = 1.335$
+\end{center}
 
+The Elasticity of Cost w.r.t is equal to 1.335. This means that for every $1\%$ increase/decrease in fuel will lead to a $1\%$ increase/decrease in Cost.
 
-\section{Problem 5}
+\clearpage
 
-\section{Problem 6}
+\section*{Problem 5}
+Please note: Manual work included along-side software output\\
+$t_{119, 0.025} = 1.98$\\
+$0.2801 \pm 1.98 * 0.1295$\\
+$0.2801 \pm 0.2564$\\
+$[0.0231 \rightarrow 0.5365]$
+
+\section*{Problem 6}
 $H_0: Labor \leq 0$\\
 $H_1: Labor \geq 0$
 
+\vspace{5mm}
+\noindent
+$\mathit{CV} = 2.358$\\
+$\mu = {\frac {0.0036} {0.0011}} = 3.4379$\\
+$3.3479 > 2.358$\\
 
+\noindent
+Therefore, we must reject the null hypothesis. The The labor paramater is non-negative
 
-
-\section{Problem 7}
+\section*{Problem 7}
 $H_0: R^2 = 0$\\
 $H_1: R^2 \neq 0$
 
 \vspace{5mm}
 \noindent
-$CV = 2.4472 (\alpha = 0.05, DF = 4 / 118)$
-\newline
-$F = (.9438 / 4) / [(1 - .9438) * 118] = 0.0356$
-\newline
-$0.0356 \textless 2.4472$
+$CV = 2.4472 (\alpha = 0.05, DF = 4 / 118)$\\
+\vspace{5mm}
+$F = \frac {\frac {0.9438} 4} {(1-{0.9438}) * 118}$\\
+\vspace{5mm}
+$0.0356 < 2.4472$
+
+\noindent
+Therefore, we fail to reject the null hypothesis.
 
 \end{document}
