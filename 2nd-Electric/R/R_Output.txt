@@ -1,8 +1,6 @@
 > require(xlsx)
 > library("MASS")
 
-Problem 1)
-
 > lm.out <- lm(Cost ~ Output + Pr_Labor + Pr_Capital + Pr_Fuel, data = UtilitiesDataSheet)
 > summary(lm.out)
 
