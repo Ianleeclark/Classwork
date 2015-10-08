@@ -30,3 +30,12 @@ used R and LaTeX for this paper and, once again, I'm very happy with how the
 formatting came out. As well, I wrote my personal opinions of how their report
 data effects overall market health: 
 <a title="Monsanto Earnings Report" href="https://github.com/GrappigPanda/Classwork/blob/master/Monsanto%20Earnings%20Report%20Analysis/IanClark_-_Paper_3.pdf">Monsanto Earnings Report</a>
+
+CONTACT:
+
+http://www.twitter.com/grappigpanda
+
+http://www.ianleeclark.com
+
+ian@ianleeclark.com
+
