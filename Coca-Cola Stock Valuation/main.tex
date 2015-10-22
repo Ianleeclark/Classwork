@@ -1,0 +1,191 @@
+\documentclass[11pt,letterpaper,english]{article}
+
+\usepackage[margin=1.0in]{geometry}
+\usepackage{helvetica}
+\usepackage{graphicx}
+\usepackage{stmaryrd}
+
+\newcommand{\newpar}{\vspace{10mm}\noindent}
+
+\title{Paper 4: An Analysis of Coca Cola}
+\author{Ian Clark}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{The Discount Rate}
+To choose the discount rate, I have opted to use the ten-year treasury as the guide. I am choosing
+this rate for the following: I feel that the ten-year treasury (and to a large extent the Federal
+Reserve's actions in relation to it) allow a rational layman to reasonably estimate general economic
+conditions. So, my current Discount Rate will be $1.92$ as of today. However, since the ten-year treasury
+rate has been so volatile, I have decided to use the range of $\{1.90 \shortrightarrow 1.99\}$ for 
+further calculations, so to give a more reasonable estimate.
+
+\section*{Market Risk Premium}
+In determining the Market Risk Premium, I have chosen to follow the implied approach. Because I have chosen
+this method of determining the MRP, I must establish the following: current dividend yield of $1.91$.
+
+\newpar
+Now, the expected earnings growth and the Expected Return on Stocks must be estimated using these formulas:
+
+\begin{center}
+$Expected Earnings Growth = Productivity + Labor Growth + Inflation$
+\end{center}
+
+\begin{center}
+$ExpectedReturnOnStocks = CurrDivYield + ExpectedEarningsGrowth$
+\end{center}
+
+\begin{center}
+$MarketRiskPremium = ExpectedReturnOnStocks - RiskFreeRate$
+\end{center}
+
+\noindent
+Firstly, I will establish Inflation as the $\%\Delta{Core CPI}$. I have chosen the Core CPI because
+it better covers the current economic state. The core CPI is the CPI less food and energy and because
+of the volatility within the energy market, specifically due to the competition introduced within the oil
+market. Moreover, I don't feel the in-elasticity introduced by food in the CPI is necessary. So, we can 
+assert that $\Pi = 1.8$. 
+
+\newpar
+Next is Labor Growth and Productivity. I don't have any other fancy metrics
+for these and Professor Sweet's reasoning behind his numbers seemed solid, so I will follow those.
+So, $LaborGrowth = .5\%$ and $Productivity = 2\%$.
+
+\newpar
+So, with our newly established variables, it can be concluded that:
+
+\begin{center}
+$Expected Earnings Growth = .02 + .005 + .18 = .43$
+\end{center}
+
+\begin{center}
+$ExpectedReturnOnStocks = 0.019 + 0.043 = .062$
+\end{center}
+
+\begin{center}
+$MarketRiskPremium = .062 - .0191 = .0429$
+\end{center}
+
+\section*{Determination of Beta}
+
+\subsection*{Revenue Sensitivity}
+As surprising as this sounds, Coca-Cola is the second-most recognized word in the world, following OK.
+Moreover, there can be argued a great in-elasticity between Coke and other soft drink products 
+because consumers of Coke are unlikely to switch to Pepsi and vice-versa. As such, it is fair to
+assert that within recession, Coca-Cola can continue to prosper. Because of this, it is a fair 
+assertion that Coca-Cola's stock will be below 1.
+
+\subsection*{Operating Leverage}
+Coca-Cola has high fixed costs mostly due to research \& development and production. As we can see in
+the following two tables, Coca-Cola ranks lower than the median by a significant margin in both Gross 
+and Net margins which can imply that the stock will be below 1 in terms of Beta.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Gross Margin Standard Deviation  &  & S\&P 500 & KO UN Equity & Rank \\ \hline
+Median     &  & 2.88     & 1.73         & 20.6 \\ \hline
+90 Percentile   &  & 8.93     &              &      \\ \hline
+10th Percentile &  & 1.00     &              &      \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Net Margin Standard Deviation  &  & S\&P 500 & KO UN Equity & Rank \\ \hline
+Median     &  & 3.26     & 1.46         & 14.6 \\ \hline
+90 Percentile   &  & 11.42     &              &      \\ \hline
+10th Percentile &  & 1.11     &              &      \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{Financial Leverage}
+As the table below depicts, Coca-Cola has a significantly high debt in relation to the S\&P 500.
+There has been a trend of estimating the beta to be below one and I do not think this high debt
+will do much to change it. Even though, as depicted below, Coca-Cola has massive amounts of debt.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+Debt to Equity  &  & S\&P 500 & KO UN Equity & Rank \\ \hline
+Median          &  & 61.90    & 111.71       & 75.6 \\ \hline
+90 Percentile   &  & 200.70   &              &      \\ \hline
+10th Percentile &  & 13.60    &              &      \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection*{CAP-M K_e}
+Before any calculations are completed, I would assume that Coca-Cola's beta is in the range of
+$\{0.5 \shortrightarrow 0.7\}$. However, we're not not (entirely) in the business of estimations,
+so I will assert that beta will be 0.7. Well below 1, but not too low.
+
+\begin{center}
+$K_e = 1.91 + .7 * 1.91 = 4.98\%$
+\end{center}
+
+
+\newpage
+\Large\Large\Large\begin{center}
+Paper 5: A Valuation of Coca Cola
+\end{center}
+
+\section*{Gordon Growth Model}
+The biggest assumption here will be that dividends growth is relative to the growth in earnings. I
+am making this decision to calculate it this way because I am more interested in the long term 
+growth of a company. So, our long term growth will be the same as our expected earnings from paper 
+four, or $4.3\%$.
+
+\begin{center}
+$Value = 1.32 * (1 + 0.043) / (0.0498 - 0.043) = \$ 202.2467$
+\end{center}
+
+
+\section*{Capitalized Earnings Model}
+Given my justification for Core CPI in paper 4, I will choose to use a $2\%$ for inflation, as it 
+is nearer to my original estimate. From our calculations, we can assert that Coca-Cola is undervalued
+by nearly $25\%$ from its 24 April 2015 closing price of $41.04$.
+
+\begin{center}
+$Value = 1.58 / (4.98\% - 2\%) = 53.02$
+\end{center}
+
+
+\section*{H Model}
+Given our previous estimations, we have two remaining estimates: H and Short-term growth. For the short-
+term growth, I have opted to use the PEG ratio.
+
+\begin{center}
+$ShortTermGrowth = (41.04 / 1.58) / 4.22 = 6.035\%$
+\end{center}
+
+\begin{center}
+$Value = (1.32*(1+0.043)+1.32*3*(0.06035-0.043))/(0.0498-0.043) = \$ 212.56$
+\end{center}
+
+
+\section*{Conclusions}
+Needless to say, I don't think that the Gordon Growth Model offers a viable stock price. The Capitalized
+Earnings Model, however, offers a reasonable price, and a price that is undervalued and warrants
+a purchase. With the H-model, as well, one would certainly purchase at that price.
+
+
+\newpage
+\begin{thebibliography}{9}
+\bibitem{Yahoo Finance}
+    Yahoo! Finance,
+    \emph{$http://finance.yahoo.com/q?s=KO$}.
+\bibitem{Yahoo Finance}
+    Yahoo! Finance,
+    \emph{$http://finance.yahoo.com/q?s=SPY$}.
+\bibitem{BLS}
+    Bureau of Labor Statistics,
+    \emph{$http://www.bls.gov/news.release/cpi.nr0.htm$}.
+\end{thebibliography}
+
+\end{document} 
